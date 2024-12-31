@@ -1,0 +1,364 @@
+/*将所有 HTML 元素的外边距和内边距初始化为 0，消除不同浏览器默认样式带来的差异，以便后续能更精准地进行页面布局和样式设定*/
+* {
+    margin: 0;
+    padding: 0;
+    /*在布局时更容易控制元素实际所占空间的大小*/
+    box-sizing: border-box;
+}
+
+/*去除<li> 元素默认的列表标记*/
+li {
+    list-style: none;
+}
+
+/*自定义字体*/
+@font-face {
+    font-family: electronicFont;
+    src: url(../fonts/DS-DIGIT.TTF);
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* 设置背景为动图 */
+    background-image: url(../img/R.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* 行高是字体1.15倍 */
+    line-height: 1.15;
+    height:100vh;
+    
+}
+
+
+header {
+    /*设置为相对定位*/
+    position: relative;
+    height: 1.25rem;
+    /*图片大小填满整个 header 元素区域*/
+    background: url(../img/head_bg.png) no-repeat top center;
+    background-size: 100% 100%;
+    
+}
+
+header h1 {
+    font-size: 0.475rem;
+    color: rgb(255, 255, 255);
+    /*让标题文本在水平方向居中对齐，提升页面的美观度和布局的规整性*/
+    text-align: center;
+    line-height: 1rem;
+}
+
+header .showTime {
+    position: absolute;
+    top: 0;
+    right: 0.375rem;
+    line-height: 0.9375rem;
+    font-size: 0.25rem;
+    color: rgb(255, 255, 255);
+}
+
+.mainbox {
+  /*  min-width: 1024px;*/
+    max-width: 1920px;
+    padding: 0.125rem 0.125rem 0;
+    /*将 mainbox 元素设置为弹性盒子布局（Flexbox），方便对其内部子元素进行灵活的排列和对齐操作*/
+    display: flex;
+}
+
+.mainbox .column {
+    flex: 3;
+}
+
+.mainbox .column:nth-child(2) {
+    flex: 5;
+    margin: 0 0.125rem 0.1875rem;
+    /*当该元素内部的内容超出其自身尺寸时，隐藏超出的部分，防止出现内容溢出导致布局混乱的情况*/
+    overflow: hidden;
+}
+
+.panel {
+    position: relative;
+    height: 3.875rem;
+    /*营造出比较淡雅的边框视觉效果*/
+    border: 1px solid rgba(149, 202, 14, 0.04) ;
+    background: rgba(255, 255, 255, 0.04) url(../images/line\(1\).png);
+    padding: 0 0.1875rem 0.5rem;
+    margin-bottom: 0.1875rem;
+    width: 27vw;
+}
+
+/*伪元素主要用于在面板的四个角添加一些装饰性的小方块元素*/
+.panel::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #02a6b5;
+    border-left: 2px solid #02a6b5;
+    border-radius: 20%;
+}
+
+.panel::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #02a6b5;
+    border-right: 2px solid #02a6b5;
+    border-radius: 20%;
+}
+
+.panel .panel-footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.panel .panel-footer::before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-bottom: 2px solid #02a6b5;
+    border-left: 2px solid #02a6b5;
+    border-radius: 20%;
+}
+
+.panel .panel-footer::after {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-bottom: 2px solid #02a6b5;
+    border-right: 2px solid #02a6b5;
+    border-radius: 20%;
+}
+
+.panel h2 {
+    height: 0.6rem;
+    line-height: 0.6rem;
+    text-align: center;
+    color: #ffffff;
+    /*设置标题的字体大小和字体粗细*/
+    font-size: 0.25rem;
+    font-weight: 400;
+}
+
+/*定义了面板内图表元素*/
+.panel .chart {
+    height: 3rem;
+}
+
+/*通用元素样式设置*/
+i{ margin:0px; padding:0px; text-indent:0px;}
+img{ border:none; max-width: 100%;}
+a{ text-decoration:none; color:#1b1e21;}
+a.active,a:focus{ outline:none!important; text-decoration:none;}
+ol,ul,p,h1,h2,h3,h4,h5,h6{ padding:0; margin:0}
+a:hover{ color:rgb(222, 229, 236); text-decoration: none!important}
+
+/*清除浮动*/
+.clearfix:after, .clearfix:before {
+	display: table;
+	content: " "
+}
+ .clearfix:after {
+	clear: both
+}
+.boxall {
+    padding: 1.5155vw;
+    background-color: transparent;
+    position: absolute;
+    top: 5vw;
+    left: 27.5vw;
+    /*设置元素的层叠顺序*/
+    z-index: 10;
+    width:44.6vw;
+}
+
+/*设置 .navboxall 元素的高度*/
+.navboxall{height: calc(100% - 30px);}
+/*Plugin CSS*/
+.wrap{ height:82%; overflow: hidden;}
+.wrap li{  line-height:2.59367vw; height:2.59367vw; }
+.wrap li p,.wraptit{ font-size: 0; }
+/*将 <span> 元素设置为行内块级元素*/
+.wrap li span,.wraptit span{ display: inline-block; font-size:0.9699vw;color: rgb(249, 242, 242); text-align: center;}
+.wraptit { border-bottom:0.0649vw dotted rgba(248, 6, 6, 0.15); padding:0 0 0.6495vw 0; margin-bottom: 0.6495vw;}
+.wraptit span{font-size:0.9699vw;color: rgb(187, 238, 247); }
+.wrap li span:nth-child(1),.wraptit span:nth-child(1){ width: 14%}
+.wrap li span:nth-child(2),.wraptit span:nth-child(2){ width: 18%}
+.wrap li span:nth-child(3),.wraptit span:nth-child(3){ width: 17%}
+.wrap li span:nth-child(4),.wraptit span:nth-child(4){ width: 17%}
+.wrap li span:nth-child(5),.wraptit span:nth-child(5){ width: 17%}
+.wrap li span:nth-child(6),.wraptit span:nth-child(6){ width: 17%}
+.str_wrap {
+    overflow: hidden;
+    width:42.5vw; 
+    height:23vw;
+    max-width: 42.5vw;
+    position: relative;
+    left: 20.75vw; 
+    bottom: 0.95vw; 
+    /*将元素在水平方向上进行居中对齐等布局操作*/
+    transform: translateX(-50%); 
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+    /*使元素内部的文本或子元素会在一行内连续排列*/
+    white-space: nowrap; 
+}
+
+
+.str_move { 
+    /*保持不换行的空白符*/
+	white-space:nowrap;
+	position:absolute; 
+	top:0; 
+	left:0;
+    /*当鼠标指针悬停在该元素上时，鼠标指针样式会变为表示可移动的样式*/
+	cursor:move;
+}
+.str_move_clone {
+	display:inline-block;
+    /*控制该元素在垂直方向上的对齐方式*/
+	vertical-align:top;
+	position:absolute; 
+	left:100%;
+	top:0;
+}
+
+/*表示垂直滚动相关的特定状态*/
+.str_vertical .str_move_clone {
+	left:0;
+	top:100%;
+}
+
+/*表示向下滚动相关特定情况*/
+.str_down .str_move_clone {
+	left:0;
+	bottom:100%;
+}
+.str_vertical .str_move,
+.str_down .str_move {
+	white-space:normal;
+	width:100%;
+}
+.str_static .str_move,
+.no_drag .str_move,
+.noStop .str_move{
+	cursor:inherit;
+}
+.str_wrap img {
+	max-width:none !important;	
+}
+
+/*添加装饰性元素*/
+.boxall::before {
+    position: absolute;
+    top: 14px;
+    left: 22px;
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #02a6b5;
+    border-left: 2px solid #02a6b5;
+    border-radius: 20%;
+}
+.boxall::after {
+    position: absolute;
+    top: 14px;
+    right: 12px;
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #02a6b5;
+    border-right: 2px solid #02a6b5;
+    border-radius: 20%;
+}
+.str_wrap::before {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-bottom: 2px solid #02a6b5;
+    border-left: 2px solid #02a6b5;
+    border-radius: 20%;
+}
+.str_wrap::after {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-bottom: 2px solid #02a6b5;
+    border-right: 2px solid #02a6b5;
+    border-radius: 20%;
+}
+.public-bg{
+    background: rgba(12,26,63,0.3);
+}
+.title-nav{
+    padding: 1.5155vw;
+    width:45.4vw; 
+    height:24.7vw;
+    max-width: 45.4vw;
+    /*元素设置为绝对定位*/
+    position: absolute;
+    left: 49.7vw;
+    top: 31vw;
+    transform: translateX(-50%); 
+    /*分别针对不同浏览器引擎*/
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+    white-space: nowrap; 
+    
+}
+
+/*定义的动画关键帧*/
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes rotate1 {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(-360deg);
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    html {
+        font-size: 42px !important;
+    }
+}
+
+@media screen and (min-width: 1920) {
+    html {
+        font-size: 80px !important;
+    }
+}
